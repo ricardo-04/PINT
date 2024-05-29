@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./database');
+
 const Locais = sequelize.define('locais', {
-    IDLOCAL: {
+    ID_LOCAL: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    DESIGNACAOLOCAL: {
+    DESIGNACAO_LOCAL: {
         type: Sequelize.TEXT,
         allowNull: false
     },
@@ -19,7 +20,8 @@ const Locais = sequelize.define('locais', {
         allowNull: true
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 module.exports = Locais;

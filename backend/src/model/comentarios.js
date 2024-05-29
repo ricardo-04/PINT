@@ -4,40 +4,40 @@ const Forum = require('./forum');
 const Centro = require('./centro');
 
 const Comentarios = sequelize.define('comentarios', {
-    NCOMENTARIO: {
-        type: Sequelize.NUMERIC,
+    ID_COMENTARIO: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NPOST: {
-        type: Sequelize.NUMERIC,
+    ID_FORUM: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Forum,
-            key: 'NPOST'
+            key: 'ID_FORUM'
         }
     },
-    NCENTRO: {
-        type: Sequelize.NUMERIC,
+    ID_CENTRO: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Centro,
-            key: 'NCENTRO'
+            key: 'ID_CENTRO'
         }
     },
     DESCRICAO: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    DATACOMENTARIO: {
+    DATA_COMENTARIO: {
         type: Sequelize.DATE,
         allowNull: false
     },
-    NFUNCIONARIO1: {
-        type: Sequelize.NUMERIC,
+    ID_FUNCIONARIO: {
+        type: Sequelize.INTEGER,
         allowNull: false
     },
-    NRECOMENDACAO1: {
+    ID_RECOMENDACAO: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
@@ -46,7 +46,10 @@ const Comentarios = sequelize.define('comentarios', {
         allowNull: true
     }
 }, {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
 });
 
+Comentarios.belongsTo(Forum, {foreignKey: 'ID_FORUM'});
+Comentarios.belongsTo(Centro, {foreignKey: 'ID_CENTRO'});
 module.exports = Comentarios;

@@ -13,6 +13,7 @@ const Fotos = require('./src/model/fotos');
 const Locais = require('./src/model/locais');
 const SubArea = require('./src/model/subArea');
 const Utilizador = require('./src/model/utilizador');
+const ParticipantesEvento = require('./src/model/participantes_evento');
 const app = express();
 
 //Configurações

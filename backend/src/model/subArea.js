@@ -3,25 +3,27 @@ const sequelize = require('./database');
 const Area = require('./area');
 
 const SubArea = sequelize.define('sub_area', {
-    NSUBAREA: {
-        type: Sequelize.NUMERIC,
+    ID_SUB_AREA: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NAREA: {
-        type: Sequelize.NUMERIC,
+    ID_AREA: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Area,
-            key: 'NAREA'
+            key: 'ID_AREA'
         }
     },
-    NOMEATIVIDADE: {
+    NOME_ATIVIDADE: {
         type: Sequelize.TEXT,
         allowNull: false
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
+SubArea.belongsTo(Area, {foreignKey: 'ID_AREA'});
 module.exports = SubArea;

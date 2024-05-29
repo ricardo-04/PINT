@@ -2,13 +2,14 @@ const Sequelize = require('sequelize');
 const sequelize = require('./database');
 
 const AlbumFotos = sequelize.define('albumfotos', {
-    NALBUM: {
-        type: Sequelize.NUMERIC,
+    ID_ALBUM: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 module.exports = AlbumFotos;

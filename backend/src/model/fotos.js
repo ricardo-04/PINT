@@ -4,25 +4,25 @@ const Utilizador = require('./utilizador');
 const AlbumFotos = require('./albumfotos');
 
 const Fotos = sequelize.define('fotos', {
-    NFOTO: {
-        type: Sequelize.NUMERIC,
+    ID_FOTO: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NFUNCIONARIO: {
+    ID_FUNCIONARIO: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Utilizador,
-            key: 'NFUNCIONARIO'
+            key: 'ID_FUNCIONARIO'
         }
     },
-    NALBUM: {
-        type: Sequelize.NUMERIC,
+    ID_ALBUM: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
             model: AlbumFotos,
-            key: 'NALBUM'
+            key: 'ID_ALBUM'
         }
     },
     LEGENDA: {
@@ -34,7 +34,10 @@ const Fotos = sequelize.define('fotos', {
         allowNull: true
     }
 }, {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
 });
 
+Fotos.belongsTo(Utilizador, {foreignKey: 'ID_FUNCIONARIO'});
+Fotos.belongsTo(AlbumFotos, {foreignKey: 'ID_ALBUM'});
 module.exports = Fotos;

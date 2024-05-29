@@ -3,25 +3,27 @@ const sequelize = require('./database');
 const Eventos = require('./eventos');
 
 const Area = sequelize.define('area', {
-    NAREA: {
-        type: Sequelize.NUMERIC,
+    ID_AREA: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NEVENTO: {
-        type: Sequelize.NUMERIC,
+    ID_EVENTO: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
             model: Eventos,
-            key: 'NEVENTO'
+            key: 'ID_EVENTO'
         }
     },
-    NOMEAREA: {
+    NOME_AREA: {
         type: Sequelize.TEXT,
         allowNull: false
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
+Area.belongsTo(Eventos, {foreignKey: 'ID_EVENTO'});
 module.exports = Area;

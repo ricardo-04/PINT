@@ -4,26 +4,29 @@ const Locais = require('./locais');
 const Area = require('./area');
 
 const AreaLocal = sequelize.define('arealocal', {
-    IDLOCAL: {
+    ID_LOCAL: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         references: {
             model: Locais,
-            key: 'IDLOCAL'
+            key: 'ID_LOCAL'
         }
     },
-    NAREA: {
-        type: Sequelize.NUMERIC,
+    ID_AREA: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         references: {
             model: Area,
-            key: 'NAREA'
+            key: 'ID_AREA'
         }
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
+AreaLocal.belongsTo(Locais, {foreignKey: 'ID_LOCAL'});
+AreaLocal.belongsTo(Area, {foreignKey: 'ID_AREA'});
 module.exports = AreaLocal;

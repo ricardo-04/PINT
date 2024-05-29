@@ -7,60 +7,60 @@ const Locais = require('./locais');
 const Forum = require('./forum');
 
 const Eventos = sequelize.define('eventos', {
-    NEVENTO: {
-        type: Sequelize.NUMERIC,
+    ID_EVENTO: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NCENTRO: {
-        type: Sequelize.NUMERIC,
+    ID_CENTRO: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Centro,
-            key: 'NCENTRO'
+            key: 'ID_CENTRO'
         }
     },
-    IDLOCAL: {
+    ID_LOCAL: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Locais,
-            key: 'IDLOCAL'
+            key: 'ID_LOCAL'
         }
     },
-    NFUNCIONARIO: {
+    ID_CRIADOR: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Utilizador,
-            key: 'NFUNCIONARIO'
+            key: 'ID_FUNCIONARIO'
         }
     },
-    NALBUM: {
-        type: Sequelize.NUMERIC,
+    ID_ALBUM: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
             model: AlbumFotos,
-            key: 'NALBUM'
+            key: 'ID_ALBUM'
         }
     },
-    NPOST: {
-        type: Sequelize.NUMERIC,
+    ID_FORUM: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
             model: Forum,
-            key: 'NPOST'
+            key: 'ID_FORUM'
         }
     },
-    NOMEEVENTO: {
+    NOME_EVENTO: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    TIPOEVENTO: {
+    TIPO_EVENTO: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    DATAEVENTO: {
+    DATA_EVENTO: {
         type: Sequelize.DATE,
         allowNull: true
     },
@@ -72,20 +72,27 @@ const Eventos = sequelize.define('eventos', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    TIPOAREA: {
+    TIPO_AREA: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    NPARTICIPANTE: {
-        type: Sequelize.NUMERIC,
+    N_PARTICIPANTSE: {
+        type: Sequelize.INTEGER,
         allowNull: false
     },
-    NAPROVADOR: {
-        type: Sequelize.NUMERIC,
+    ID_APROVADOR: {
+        type: Sequelize.INTEGER,
         allowNull: false
     }
-}, {
-    timestamps: false
+}, 
+{
+    timestamps: false,
+    freezeTableName: true
 });
+Eventos.belongsTo(Centro, {foreignKey: 'ID_CENTRO'});
+Eventos.belongsTo(Utilizador, {foreignKey: 'ID_CRIADOR'});
+Eventos.belongsTo(AlbumFotos, {foreignKey: 'ID_ALBUM'});
+Eventos.belongsTo(Locais, {foreignKey: 'ID_LOCAL'});
+Eventos.belongsTo(Forum, {foreignKey: 'ID_FORUM'});
 
 module.exports = Eventos;

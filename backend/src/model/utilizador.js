@@ -3,33 +3,34 @@ const sequelize = require('./database');
 const Centro = require('./centro');
 
 const Utilizador = sequelize.define('utilizador', {
-    NFUNCIONARIO: {
+    ID_FUNCIONARIO: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
-    NCENTRO: {
-        type: Sequelize.NUMERIC,
+    ID_CENTRO: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Centro,
-            key: 'NCENTRO'
+            key: 'ID_CENTRO'
         }
     },
-    UTI_NFUNCIONARIO: {
+    ADMINISTRADOR:{
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    },
+    ID_ADMIN:{
         type: Sequelize.INTEGER,
         allowNull: true,
-        references: {
-            model: 'utilizadors',
-            key: 'NFUNCIONARIO'
-        }
     },
-    NOMEFUNCIONARIO: {
+    NOME_FUNCIONARIO: {
         type: Sequelize.TEXT,
         allowNull: false
     },
     NIF: {
-        type: Sequelize.NUMERIC,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     MORADA: {
@@ -53,7 +54,9 @@ const Utilizador = sequelize.define('utilizador', {
         allowNull: false
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
-
+Utilizador.belongsTo(Centro, {foreignKey: 'ID_CENTRO'});
+Utilizador.belongsTo(Utilizador, {foreignKey: 'ID_FUNCIONARIO'});
 module.exports = Utilizador;

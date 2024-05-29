@@ -2,25 +2,27 @@ const Sequelize = require('sequelize');
 const sequelize = require('./database');
 
 const Centro = sequelize.define('centro', {
-    NCENTRO: {
-        type: Sequelize.NUMERIC,
+    ID_CENTRO: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
-    NOMECENTRO: {
+    NOME_CENTRO: {
         type: Sequelize.TEXT,
         allowNull: false
     },
     MORADA: {
         type: Sequelize.TEXT,
-        allowNull: true
+        allowNull: false
     },
-    NEVENTOS: {
-        type: Sequelize.NUMERIC,
+    N_EVENTOS: {
+        type: Sequelize.INTEGER,
         allowNull: true
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 module.exports = Centro;

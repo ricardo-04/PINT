@@ -3,17 +3,17 @@ const sequelize = require('./database');
 const Utilizador = require('./utilizador');
 
 const Forum = sequelize.define('forum', {
-    NPOST: {
-        type: Sequelize.NUMERIC,
+    ID_FORUM: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    NFUNCIONARIO: {
+    ID_FUNCIONARIO: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             model: Utilizador,
-            key: 'NFUNCIONARIO'
+            key: 'ID_FUNCIONARIO'
         }
     },
     NEVENTO: {
@@ -29,7 +29,8 @@ const Forum = sequelize.define('forum', {
         allowNull: true
     }
 }, {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
 });
-
+Forum.belongsTo(Utilizador, {foreignKey: 'ID_FUNCIONARIO'});
 module.exports = Forum;
