@@ -1,13 +1,14 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./database');
 const Utilizador = require('./utilizador');
-const AlbumFotos = require('./albumfotos');
+const AlbumFotos = require('./albumFotos');
 
 const Fotos = sequelize.define('fotos', {
     ID_FOTO: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     ID_FUNCIONARIO: {
         type: Sequelize.INTEGER,

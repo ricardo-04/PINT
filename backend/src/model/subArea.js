@@ -6,7 +6,8 @@ const SubArea = sequelize.define('sub_area', {
     ID_SUB_AREA: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     ID_AREA: {
         type: Sequelize.INTEGER,

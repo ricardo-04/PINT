@@ -5,7 +5,8 @@ const Locais = sequelize.define('locais', {
     ID_LOCAL: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     DESIGNACAO_LOCAL: {
         type: Sequelize.TEXT,

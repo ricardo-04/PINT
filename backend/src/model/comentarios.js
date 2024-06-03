@@ -7,7 +7,8 @@ const Comentarios = sequelize.define('comentarios', {
     ID_COMENTARIO: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     ID_FORUM: {
         type: Sequelize.INTEGER,

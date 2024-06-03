@@ -5,7 +5,8 @@ const AlbumFotos = sequelize.define('albumfotos', {
     ID_ALBUM: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     }
 }, {
     timestamps: false,

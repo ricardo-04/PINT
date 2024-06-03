@@ -6,7 +6,8 @@ const Forum = sequelize.define('forum', {
     ID_FORUM: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     ID_FUNCIONARIO: {
         type: Sequelize.INTEGER,

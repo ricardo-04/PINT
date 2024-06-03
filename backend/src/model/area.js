@@ -6,7 +6,8 @@ const Area = sequelize.define('area', {
     ID_AREA: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     ID_EVENTO: {
         type: Sequelize.INTEGER,
