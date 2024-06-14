@@ -1,4 +1,4 @@
-const AlbumFotos = require('../model/albumfotos');
+const AlbumFotos = require('../model/albumFotos');
 
 const albumFotosController = {
   async albumFotos_list(req, res) {

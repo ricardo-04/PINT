@@ -1,4 +1,4 @@
-const AreaLocal = require('../model/arealocal');
+const AreaLocal = require('../model/areaLocal');
 
 const arealocalController = {
   async arealocal_list(req, res) {

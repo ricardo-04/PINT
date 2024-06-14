@@ -2,7 +2,7 @@ const express = require('express');
 const sequelize = require('./src/model/database');
 const albumFotosRoute = require('./src/routes/albumFotosRoute');
 
-const AlbumFotos = require('./src/model/albumfotos');
+const AlbumFotos = require('./src/model/albumFotos');
 const Area = require('./src/model/area');
 const AreaLocal = require('./src/model/areaLocal');
 const Centro = require('./src/model/centro');
@@ -14,6 +14,7 @@ const Locais = require('./src/model/locais');
 const SubArea = require('./src/model/subArea');
 const Utilizador = require('./src/model/utilizador');
 const ParticipantesEvento = require('./src/model/participantes_evento');
+
 const app = express();
 
 //Configurações
